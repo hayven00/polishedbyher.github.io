@@ -29,12 +29,23 @@
   .nav-links { display: flex; gap: 2.5rem; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
   .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); text-decoration: none; transition: color 0.2s; cursor: none; }
   .nav-links a:hover, .nav-links a.active { color: var(--black); }
-  .nav-book { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 0.65rem 1.5rem; text-decoration: none; transition: opacity 0.2s; cursor: none; }
+  .nav-book { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 0.65rem 1.5rem; text-decoration: none; transition: opacity 0.2s; cursor: none; border: none; font-family: 'Outfit', sans-serif; }
   .nav-book:hover { opacity: 0.75; }
 
-  /* PAGE TRANSITIONS */
-  .page { display: none; animation: pageIn 0.4s ease; }
+  /* MOBILE NAV TOGGLE */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--white); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.05em; color: var(--black); text-decoration: none; cursor: none; }
+  .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: none; color: var(--black); }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
   .page.active { display: block; }
+
+  /* PAGE TRANSITION */
+  .page-enter { animation: pageIn 0.4s ease forwards; }
   @keyframes pageIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
   /* ===================== HOME PAGE ===================== */
@@ -47,7 +58,7 @@
   .hero-tagline { font-size: 1rem; font-weight: 300; color: var(--gray-500); max-width: 300px; line-height: 1.7; }
   .hero-tagline strong { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem; }
   .hero-cta-group { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
-  .hero-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 1rem 2.5rem; text-decoration: none; transition: opacity 0.2s; cursor: none; }
+  .hero-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 1rem 2.5rem; text-decoration: none; transition: opacity 0.2s; cursor: none; border: none; font-family: 'Outfit', sans-serif; }
   .hero-cta:hover { opacity: 0.75; }
   .hero-scroll { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-500); display: flex; align-items: center; gap: 0.8rem; }
   .hero-scroll::before { content: ''; width: 24px; height: 1px; background: var(--gray-300); }
@@ -55,7 +66,7 @@
   .hero-number { position: absolute; right: 1.2rem; top: 50%; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gray-300); writing-mode: vertical-rl; text-transform: uppercase; transform: translateY(-50%); }
 
   /* MARQUEE */
-  .marquee-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; background: var(--black); padding: 1rem 0; }
+  .marquee-wrap { overflow: hidden; background: var(--black); padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .marquee-track { display: flex; gap: 3rem; animation: marquee 18s linear infinite; white-space: nowrap; }
   .marquee-item { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em; color: var(--white); opacity: 0.5; flex-shrink: 0; }
   .marquee-dot { color: var(--white); opacity: 0.2; flex-shrink: 0; font-size: 0.5rem; align-self: center; }
@@ -68,7 +79,7 @@
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 40px; }
   .about-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.05; margin-bottom: 1.5rem; }
   .about-body { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--gray-500); max-width: 420px; margin-bottom: 1rem; }
-  .about-link { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--black); padding-bottom: 0.3rem; transition: gap 0.2s; margin-top: 1rem; cursor: none; }
+  .about-link { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; display: inline-flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--black); padding-bottom: 0.3rem; transition: gap 0.2s; cursor: none; margin-top: 1rem; }
   .about-link:hover { gap: 1.2rem; }
   .about-visual-side { background: var(--gray-100); display: flex; align-items: center; justify-content: center; }
   .about-visual-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
@@ -83,17 +94,17 @@
   .services-preview { padding: 6rem 3rem; background: var(--off-white); }
   .services-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; }
   .services-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.05; }
-  .see-all { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; cursor: none; }
+  .see-all { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; cursor: none; background: none; border: none; font-family: 'Outfit', sans-serif; }
   .see-all:hover { color: var(--black); }
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .service-item { background: var(--white); padding: 2rem; display: flex; flex-direction: column; gap: 0.8rem; transition: background 0.25s; }
   .service-item:hover { background: var(--black); }
   .service-item:hover .s-name, .service-item:hover .s-desc, .service-item:hover .s-price { color: var(--white) !important; }
-  .service-item:hover .s-num { color: rgba(255,255,255,0.15); }
+  .service-item:hover .s-num { color: rgba(255,255,255,0.1); }
   .s-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--gray-100); line-height: 1; transition: color 0.25s; }
   .s-name { font-size: 1rem; font-weight: 600; color: var(--black); transition: color 0.25s; }
   .s-desc { font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--gray-500); transition: color 0.25s; flex: 1; }
-  .s-price { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; color: var(--black); transition: color 0.25s; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .s-price { font-size: 0.78rem; font-weight: 600; color: var(--black); transition: color 0.25s; padding-top: 1rem; border-top: 1px solid var(--border); }
 
   /* ===================== SERVICES PAGE ===================== */
   .page-header { padding: 10rem 3rem 5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; }
@@ -116,7 +127,7 @@
   .cta-banner { background: var(--black); padding: 6rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
   .cta-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
   .cta-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 4.5rem); color: var(--white); line-height: 1.05; }
-  .cta-btn { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--white); color: var(--black); padding: 1.1rem 2.5rem; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; cursor: none; }
+  .cta-btn { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--white); color: var(--black); padding: 1.1rem 2.5rem; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; cursor: none; border: none; font-family: 'Outfit', sans-serif; }
   .cta-btn:hover { opacity: 0.85; }
 
   /* ===================== CONTACT PAGE ===================== */
@@ -128,13 +139,15 @@
   .info-item:last-child { border-bottom: none; }
   .info-icon { width: 36px; height: 36px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
   .info-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 0.3rem; }
-  .info-value { font-size: 0.95rem; color: var(--black); }
+  .info-value { font-size: 0.95rem; font-weight: 400; color: var(--black); }
   .info-value a { color: var(--black); text-decoration: none; }
   .info-value a:hover { text-decoration: underline; }
   .hours-grid { display: flex; flex-direction: column; }
   .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
   .hours-row:last-child { border-bottom: none; }
-  .hours-closed { color: var(--gray-300); }
+  .hours-day { font-weight: 400; color: var(--black); }
+  .hours-time { font-weight: 500; color: var(--black); }
+  .hours-closed { color: var(--gray-300) !important; }
   .form-side { padding: 5rem 3rem; background: var(--off-white); }
   .form-heading { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 0.03em; margin-bottom: 0.5rem; }
   .form-sub { font-size: 0.88rem; font-weight: 300; color: var(--gray-500); margin-bottom: 2.5rem; }
@@ -146,11 +159,25 @@
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--black); }
   .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238A8A86'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; background-color: var(--white); padding-right: 2.5rem; cursor: none; }
   .form-group textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-  .form-submit { background: var(--black); color: var(--white); padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: none; transition: opacity 0.2s; margin-top: 0.5rem; width: 100%; }
+  .form-submit { background: var(--black); color: var(--white); padding: 1rem; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: none; transition: opacity 0.2s; margin-top: 0.5rem; }
   .form-submit:hover { opacity: 0.75; }
-  .success-msg { display: none; background: var(--black); color: var(--white); padding: 1.2rem; font-size: 0.85rem; text-align: center; margin-top: 1rem; }
+  .success-msg { display: none; background: var(--off-white); border: 1px solid var(--border); padding: 1.5rem; margin-top: 1rem; }
+  .success-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
+  .success-icon { width: 36px; height: 36px; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border-radius: 50%; }
+  .success-title { font-size: 1rem; font-weight: 600; color: var(--black); margin-bottom: 0.25rem; }
+  .success-text { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+  .success-actions { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; }
+  .send-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: none; width: 100%; text-align: left; cursor: none; transition: opacity 0.2s, transform 0.15s; font-family: 'Outfit', sans-serif; }
+  .send-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .send-btn:active { transform: translateY(0); }
+  .send-email { background: var(--black); color: var(--white); }
+  .send-whatsapp { background: #25D366; color: var(--white); }
+  .send-btn-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .send-btn-label { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; }
+  .send-btn-sub { font-size: 0.72rem; opacity: 0.7; margin-top: 0.1rem; }
+  .success-note { font-size: 0.75rem; color: var(--gray-500); text-align: center; padding-top: 0.8rem; border-top: 1px solid var(--border); }
 
-  /* FOOTER */
+  /* ===================== FOOTER ===================== */
   footer { background: var(--black); padding: 4rem 3rem 2rem; }
   .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em; color: var(--white); display: block; margin-bottom: 1rem; text-decoration: none; cursor: none; }
@@ -173,6 +200,8 @@
     .cursor, .cursor-ring { display: none; }
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
+    .nav-book { display: none; }
+    .nav-hamburger { display: flex; }
     .hero-main { padding: 3rem 1.5rem 1.5rem; }
     .hero-title { font-size: clamp(4rem, 18vw, 6rem); }
     .hero-bottom { flex-direction: column; align-items: flex-start; gap: 2rem; padding: 1.5rem; }
@@ -205,15 +234,26 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a onclick="navigate('home'); closeMobileMenu();">Home</a>
+  <a onclick="navigate('services'); closeMobileMenu();">Services</a>
+  <a onclick="navigate('contact'); closeMobileMenu();">Contact</a>
+</div>
+
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo" data-page="home">Polished By Her</a>
+  <a class="nav-logo" onclick="navigate('home')">Polished By Her</a>
   <ul class="nav-links">
-    <li><a href="#" data-page="home" class="active">Home</a></li>
-    <li><a href="#" data-page="services">Services</a></li>
-    <li><a href="#" data-page="contact">Contact</a></li>
+    <li><a onclick="navigate('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="navigate('services')" id="nav-services">Services</a></li>
+    <li><a onclick="navigate('contact')" id="nav-contact">Contact</a></li>
   </ul>
-  <a href="#" class="nav-book" data-page="contact">Book Now</a>
+  <button class="nav-book" onclick="navigate('contact')">Book Now</button>
+  <button class="nav-hamburger" id="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ==================== HOME PAGE ==================== -->
@@ -224,7 +264,7 @@
       <p class="hero-eyebrow">Hair & Nail Salon · East Legon, Accra</p>
       <h1 class="hero-title">Polished<span>By Her</span></h1>
       <div class="hero-line"></div>
-      <p class="hero-number">Est. 2024</p>
+      <p class="hero-number">Est. 2022</p>
     </div>
     <div class="hero-bottom">
       <div class="hero-tagline">
@@ -232,7 +272,7 @@
         Premium hair and nail services for women who appreciate the difference that skill makes.
       </div>
       <div class="hero-cta-group">
-        <a href="#" class="hero-cta" data-page="contact">Book an appointment</a>
+        <button class="hero-cta" onclick="navigate('contact')">Book an appointment</button>
         <span class="hero-scroll">Scroll to explore</span>
       </div>
     </div>
@@ -261,15 +301,15 @@
       <h2 class="about-heading">Beauty done<br>with intention.</h2>
       <p class="about-body">At Polished By Her, we believe every client deserves more than just a service — they deserve an experience. Located in East Legon, Accra, our skilled team brings precision, care, and creativity to every appointment.</p>
       <p class="about-body">From fresh braids to flawless nail art, we take time to understand what you want and deliver exactly that — every single time.</p>
-      <a href="#" class="about-link" data-page="services">View our services →</a>
+      <a class="about-link" onclick="navigate('services')">View our services →</a>
     </div>
     <div class="about-visual-side reveal">
       <div class="about-visual-inner">
-        <div class="big-stat">3+</div>
+        <div class="big-stat">4+</div>
         <p class="big-stat-label">Years of combined<br>expertise</p>
         <div class="stats-row">
-          <div class="mini-stat"><div class="mini-stat-num">500+</div><div class="mini-stat-label">Happy clients</div></div>
-          <div class="mini-stat"><div class="mini-stat-num">6</div><div class="mini-stat-label">Services offered</div></div>
+          <div class="mini-stat"><div class="mini-stat-num">499+</div><div class="mini-stat-label">Happy clients</div></div>
+          <div class="mini-stat"><div class="mini-stat-num">6</div><div class="mini-stat-label">Services</div></div>
           <div class="mini-stat"><div class="mini-stat-num">5★</div><div class="mini-stat-label">Avg. rating</div></div>
         </div>
       </div>
@@ -282,7 +322,7 @@
         <p class="section-label">What we do</p>
         <h2 class="services-heading">Our services</h2>
       </div>
-      <a href="#" class="see-all" data-page="services">See all services →</a>
+      <button class="see-all" onclick="navigate('services')">See all services →</button>
     </div>
     <div class="services-grid">
       <div class="service-item reveal"><div class="s-num">01</div><div class="s-name">Hair Styling</div><div class="s-desc">Blowouts, press & curl, silk wraps — styled to suit your texture and lifestyle.</div><div class="s-price">From GH₵ 80</div></div>
@@ -290,23 +330,23 @@
       <div class="service-item reveal"><div class="s-num">03</div><div class="s-name">Hair Colouring</div><div class="s-desc">Highlights, full colour, balayage — vibrant results using quality products.</div><div class="s-price">From GH₵ 200</div></div>
       <div class="service-item reveal"><div class="s-num">04</div><div class="s-name">Nail Art</div><div class="s-desc">Custom designs, patterns and nail art crafted by detail-obsessed technicians.</div><div class="s-price">From GH₵ 60</div></div>
       <div class="service-item reveal"><div class="s-num">05</div><div class="s-name">Manicure</div><div class="s-desc">Classic, gel, or acrylic — clean, shaped, and polished to perfection.</div><div class="s-price">From GH₵ 50</div></div>
-      <div class="service-item reveal"><div class="s-num">06</div><div class="s-name">Pedicure</div><div class="s-desc">Relaxing pedicure treatments that leave your feet smooth, soft and refreshed.</div><div class="s-price">From GH₵ 80</div></div>
+      <div class="service-item reveal"><div class="s-num">06</div><div class="s-name">Pedicure</div><div class="s-desc">Relaxing pedicure treatments that leave your feet smooth, soft and refreshed.</div><div class="s-price">From GH₵ 60</div></div>
     </div>
   </section>
 
   <footer>
     <div class="footer-top">
       <div>
-        <a href="#" class="footer-logo" data-page="home">Polished By Her</a>
+        <a class="footer-logo" onclick="navigate('home')">Polished By Her</a>
         <p class="footer-desc">Premium hair and nail services in the heart of East Legon, Accra. Where every detail matters.</p>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="#" data-page="home">Home</a></li>
-          <li><a href="#" data-page="services">Services</a></li>
-          <li><a href="#" data-page="contact">Contact</a></li>
-          <li><a href="#" data-page="contact">Book Now</a></li>
+          <li><a onclick="navigate('home')">Home</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+          <li><a onclick="navigate('contact')">Book Now</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -315,7 +355,7 @@
           <li><a href="#">East Legon, Accra</a></li>
           <li><a href="tel:0244126397">0244 126 397</a></li>
           <li><a href="#">Mon – Sat: 8am – 7pm</a></li>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="mailto:kevinfrimpongbusiness@gmail.com">kevinfrimpongbusiness@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -356,7 +396,7 @@
     <div class="service-rows">
       <div class="service-row reveal"><div><div class="sr-name">Nail Art</div><div class="sr-desc">Custom hand-painted designs, patterns, gems and 3D nail art. Every set is unique to you. Duration: 1 – 2.5 hrs.</div></div><div class="sr-price">From GH₵ 60</div></div>
       <div class="service-row reveal"><div><div class="sr-name">Manicure</div><div class="sr-desc">Classic polish, gel, or acrylic manicure. Includes nail shaping, cuticle care and your choice of colour. Duration: 45 mins – 1.5 hrs.</div></div><div class="sr-price">From GH₵ 50</div></div>
-      <div class="service-row reveal"><div><div class="sr-name">Pedicure</div><div class="sr-desc">Relaxing foot soak, exfoliation, nail shaping and polish. Leaves your feet smooth, clean and refreshed. Duration: 45 mins – 1 hr.</div></div><div class="sr-price">From GH₵ 80</div></div>
+      <div class="service-row reveal"><div><div class="sr-name">Pedicure</div><div class="sr-desc">Relaxing foot soak, exfoliation, nail shaping and polish. Leaves your feet smooth, clean and refreshed. Duration: 45 mins – 1 hr.</div></div><div class="sr-price">From GH₵ 60</div></div>
     </div>
   </div>
 
@@ -365,22 +405,22 @@
       <p class="cta-label">Ready to book?</p>
       <h2 class="cta-heading">Your next appointment<br>is one step away.</h2>
     </div>
-    <a href="#" class="cta-btn" data-page="contact">Book now →</a>
+    <button class="cta-btn" onclick="navigate('contact')">Book now →</button>
   </div>
 
   <footer>
     <div class="footer-top">
       <div>
-        <a href="#" class="footer-logo" data-page="home">Polished By Her</a>
+        <a class="footer-logo" onclick="navigate('home')">Polished By Her</a>
         <p class="footer-desc">Premium hair and nail services in the heart of East Legon, Accra. Where every detail matters.</p>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="#" data-page="home">Home</a></li>
-          <li><a href="#" data-page="services">Services</a></li>
-          <li><a href="#" data-page="contact">Contact</a></li>
-          <li><a href="#" data-page="contact">Book Now</a></li>
+          <li><a onclick="navigate('home')">Home</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
+          <li><a onclick="navigate('contact')">Book Now</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -389,7 +429,7 @@
           <li><a href="#">East Legon, Accra</a></li>
           <li><a href="tel:0244126397">0244 126 397</a></li>
           <li><a href="#">Mon – Sat: 8am – 7pm</a></li>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="mailto:kevinfrimpongbusiness@gmail.com">kevinfrimpongbusiness@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -422,21 +462,21 @@
           <div><div class="info-label">Phone</div><div class="info-value"><a href="tel:0244126397">0244 126 397</a></div></div>
         </div>
         <div class="info-item">
-          <div class="info-icon">📸</div>
-          <div><div class="info-label">Instagram</div><div class="info-value"><a href="#">@polishedbyher</a></div></div>
+          <div class="info-icon">✉️</div>
+          <div><div class="info-label">Email</div><div class="info-value"><a href="mailto:kevinfrimpongbusiness@gmail.com">kevinfrimpongbusiness@gmail.com</a></div></div>
         </div>
       </div>
       <div class="info-block reveal">
         <p class="info-section-label">Opening hours</p>
         <h3>When we're<br>open</h3>
         <div class="hours-grid">
-          <div class="hours-row"><span>Monday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span>Tuesday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span>Wednesday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span>Thursday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span>Friday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span>Saturday</span><span>8:00 AM – 7:00 PM</span></div>
-          <div class="hours-row"><span class="hours-closed">Sunday</span><span class="hours-closed">Closed</span></div>
+          <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">8:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day hours-closed">Sunday</span><span class="hours-time hours-closed">Closed</span></div>
         </div>
       </div>
     </div>
@@ -467,7 +507,7 @@
           </select>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Preferred date</label><input type="date" id="date-input" required></div>
+          <div class="form-group"><label>Preferred date</label><input type="date" id="dateInput" required></div>
           <div class="form-group">
             <label>Preferred time</label>
             <select required>
@@ -480,8 +520,33 @@
           </div>
         </div>
         <div class="form-group"><label>Additional notes (optional)</label><textarea placeholder="Any preferences, hair length, inspiration, or special requests..."></textarea></div>
-        <button type="submit" class="form-submit" id="submit-btn">Confirm booking →</button>
-        <div class="success-msg" id="success-msg">✓ Booking received! We'll confirm within 24 hours via phone.</div>
+        <button type="submit" class="form-submit" id="submitBtn">Confirm booking →</button>
+        <div class="success-msg" id="success">
+          <div class="success-top">
+            <div class="success-icon">✓</div>
+            <div>
+              <div class="success-title">Booking received!</div>
+              <div class="success-text">Send your details now so we can confirm your appointment.</div>
+            </div>
+          </div>
+          <div class="success-actions">
+            <button class="send-btn send-email" id="emailBtn" onclick="sendEmail()">
+              <span class="send-btn-icon">✉️</span>
+              <div>
+                <div class="send-btn-label">Send via Email</div>
+                <div class="send-btn-sub">kevinfrimpongbusiness@gmail.com</div>
+              </div>
+            </button>
+            <button class="send-btn send-whatsapp" id="whatsappBtn" onclick="sendWhatsApp()">
+              <span class="send-btn-icon">💬</span>
+              <div>
+                <div class="send-btn-label">Send via WhatsApp</div>
+                <div class="send-btn-sub">+233554744061</div>
+              </div>
+            </button>
+          </div>
+          <p class="success-note">We'll confirm your appointment within a few minutes.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -489,16 +554,15 @@
   <footer>
     <div class="footer-top">
       <div>
-        <a href="#" class="footer-logo" data-page="home">Polished By Her</a>
+        <a class="footer-logo" onclick="navigate('home')">Polished By Her</a>
         <p class="footer-desc">Premium hair and nail services in the heart of East Legon, Accra. Where every detail matters.</p>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="#" data-page="home">Home</a></li>
-          <li><a href="#" data-page="services">Services</a></li>
-          <li><a href="#" data-page="contact">Contact</a></li>
-          <li><a href="#" data-page="contact">Book Now</a></li>
+          <li><a onclick="navigate('home')">Home</a></li>
+          <li><a onclick="navigate('services')">Services</a></li>
+          <li><a onclick="navigate('contact')">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -507,7 +571,7 @@
           <li><a href="#">East Legon, Accra</a></li>
           <li><a href="tel:0244126397">0244 126 397</a></li>
           <li><a href="#">Mon – Sat: 8am – 7pm</a></li>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="mailto:kevinfrimpongbusiness@gmail.com">kevinfrimpongbusiness@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -519,7 +583,7 @@
 </div>
 
 <script>
-  /* CURSOR */
+  // CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
   document.addEventListener('mousemove', e => {
@@ -527,59 +591,103 @@
     ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
   });
 
-  /* ROUTER */
+  // NAVIGATION
   function navigate(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.classList.toggle('active', a.dataset.page === page);
-    });
+    const target = document.getElementById('page-' + page);
+    target.classList.add('active');
+    target.classList.remove('page-enter');
+    void target.offsetWidth;
+    target.classList.add('page-enter');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    initReveal();
-    if (page === 'contact') {
-      const d = document.getElementById('date-input');
-      if (d) d.setAttribute('min', new Date().toISOString().split('T')[0]);
-    }
+
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + page);
+    if (navEl) navEl.classList.add('active');
+
+    setTimeout(() => initReveal(), 100);
   }
 
-  document.addEventListener('click', e => {
-    const link = e.target.closest('[data-page]');
-    if (link) {
-      e.preventDefault();
-      navigate(link.dataset.page);
-    }
-  });
-
-  /* SCROLL REVEAL */
-  let revealObserver;
+  // SCROLL REVEAL
   function initReveal() {
-    if (revealObserver) revealObserver.disconnect();
-    revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('#page-' + currentPage() + ' .reveal').forEach(el => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.page.active .reveal').forEach(el => {
       el.classList.remove('visible');
-      revealObserver.observe(el);
+      observer.observe(el);
     });
-  }
-  function currentPage() {
-    return document.querySelector('.page.active').id.replace('page-', '');
   }
   initReveal();
 
-  /* FORM */
+  // BOOKING FORM
+  let bookingData = {};
+
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    const msg = document.getElementById('success-msg');
-    btn.textContent = 'Sending...';
+    const form = e.target;
+    const inputs = form.querySelectorAll('input, select, textarea');
+    const firstName = inputs[0].value;
+    const lastName  = inputs[1].value;
+    const phone     = inputs[2].value;
+    const service   = inputs[3].value;
+    const date      = inputs[4].value;
+    const time      = inputs[5].value;
+    const notes     = inputs[6].value;
+
+    bookingData = { firstName, lastName, phone, service, date, time, notes };
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Processing...';
     btn.style.opacity = '0.5';
+    btn.disabled = true;
+
     setTimeout(() => {
       btn.style.display = 'none';
-      msg.style.display = 'block';
-      e.target.reset();
-    }, 1200);
+      document.getElementById('success').style.display = 'block';
+      form.reset();
+    }, 900);
   }
+
+  function buildMessage() {
+    const d = bookingData;
+    return `*New Booking — Polished By Her*\n\n👤 *Name:* ${d.firstName} ${d.lastName}\n📞 *Phone:* ${d.phone}\n✂️ *Service:* ${d.service}\n📅 *Date:* ${d.date}\n🕐 *Time:* ${d.time}${d.notes ? `\n📝 *Notes:* ${d.notes}` : ''}`;
+  }
+
+  function sendEmail() {
+    const d = bookingData;
+    const subject = encodeURIComponent(`New Booking — ${d.firstName} ${d.lastName} (${d.service})`);
+    const body = encodeURIComponent(
+      `New Appointment Booking — Polished By Her\n\nName: ${d.firstName} ${d.lastName}\nPhone: ${d.phone}\nService: ${d.service}\nDate: ${d.date}\nTime: ${d.time}${d.notes ? `\nNotes: ${d.notes}` : ''}\n\nSent via Polished By Her website.`
+    );
+    window.open(`mailto:kevinfrimpongbusiness@gmail.com?subject=${subject}&body=${body}`);
+    markSent('emailBtn', '✓ Email app opened!');
+  }
+
+  function sendWhatsApp() {
+    const msg = encodeURIComponent(buildMessage());
+    // Ghana country code +233, remove leading 0
+    const number = '233244126397';
+    window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
+    markSent('whatsappBtn', '✓ WhatsApp opened!');
+  }
+
+  function markSent(btnId, label) {
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      btn.querySelector('.send-btn-label').textContent = label;
+      btn.style.opacity = '0.6';
+      btn.disabled = true;
+    }
+  }
+
+  // SET MIN DATE
+  const dateInput = document.getElementById('dateInput');
+  if (dateInput) dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+
+  // MOBILE MENU
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 </script>
 </body>
 </html>
